@@ -1,5 +1,5 @@
 import { it, describe, expect } from 'vitest';
-import { validateForm, isValidEmail, isValidPassword, isConfirmPassword } from '../tasks/validateForm';
+import { validateForm, isValidEmail, isValidPassword, isConfirmPassword } from './validateForm';
 
 describe('валидация данных формы регистрации', () => {
   describe('isValidEmail', () => {
