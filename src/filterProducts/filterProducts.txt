@@ -1,0 +1,88 @@
+Задача №3: Тестирование функции фильтрации списка товаров
+
+Описание задачи:
+Ты работаешь над онлайн-магазином, где пользователи могут искать товары по различным критериям.
+Тебе нужно протестировать функцию filterProducts, которая принимает список товаров
+и критерии фильтрации (название товара, минимальная цена, максимальная цена).
+Функция должна возвращать отфильтрованный список товаров, соответствующих указанным критериям.
+
+Готовый код:
+
+// filterProducts.js
+export function filterProducts(products, filters) {
+  const { title, minPrice, maxPrice } = filters;
+
+  return products.filter(product => {
+    const matchesTitle = !title || product.title.includes(title);
+    const matchesMinPrice = !minPrice || product.price >= minPrice;
+    const matchesMaxPrice = !maxPrice || product.price <= maxPrice;
+
+    return matchesTitle && matchesMinPrice && matchesMaxPrice;
+  });
+}
+
+
+Входящие данные:
+Список товаров представлен в виде массива объектов следующего формата:
+
+[
+  {
+    id: 1,
+    title: 'Product A',
+    price: 10
+  },
+  {
+    id: 2,
+    title: 'Product B',
+    price: 20
+  },
+  {
+    id: 3,
+    title: 'Product C',
+    price: 30
+  }
+]
+
+Критерии фильтрации представлены в виде объекта:
+
+{
+  title: 'Product', // Optional
+  minPrice: 15, // Optional
+  maxPrice: 25 // Optional
+}
+
+Ожидаемые результаты:
+Функция должна возвращать отфильтрованный список товаров, удовлетворяющий всем указанным критериям.
+Если критерий отсутствует, фильтр по нему не применяется.
+Если ни один товар не соответствует критериям, возвращается пустой массив.
+
+Пример входных данных и ожидаемого результата:
+Input: [
+  {
+    id: 1,
+    title: 'Product A',
+    price: 10
+  },
+  {
+    id: 2,
+    title: 'Product B',
+    price: 20
+  },
+  {
+    id: 3,
+    title: 'Product C',
+    price: 30
+  }
+], {
+  title: 'Product',
+  minPrice: 15,
+  maxPrice: 25
+}
+
+Output: [
+  {
+    id: 2,
+    title: 'Product B',
+    price: 20
+  }
+]
