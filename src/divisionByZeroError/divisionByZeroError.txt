@@ -1,0 +1,32 @@
+Задача №6: Тестирование функции с исключением
+
+Описание задачи:
+Ты работаешь над приложением, где требуется реализовать функцию divide,
+которая делит два числа. Однако, если делитель равен нулю, функция должна выбросить исключение DivisionByZeroError.
+
+Готовый код:
+
+// divide.js
+export class DivisionByZeroError extends Error {}
+
+export function divide(dividend, divisor) {
+  if (divisor === 0) {
+    throw new DivisionByZeroError('Cannot divide by zero.');
+  }
+  return dividend / divisor;
+}
+
+Входящие данные:
+Два числа: делимое и делитель.
+
+Ожидаемые результаты:
+Если делитель не равен нулю, функция должна вернуть результат деления.
+Если делитель равен нулю, функция должна выбросить исключение DivisionByZeroError.
+
+Пример входных данных и ожидаемого результата:
+
+Input: (dividend: 10, divisor: 2)
+Output: 5
+
+Input: (dividend: 10, divisor: 0)
+Expected Exception: DivisionByZeroError
