@@ -1,0 +1,85 @@
+Задача №4: Тестирование функции для вычисления статистик массива
+
+Описание задачи:
+Ты работаешь над аналитической системой, где требуется рассчитать различные статистики для массива чисел.
+Тебе нужно протестировать функцию calculateStatistics, которая принимает массив чисел и возвращает объект
+с четырьмя ключевыми метриками: среднее значение, медиана, минимальное значение и максимальное значение.
+
+Готовый код:
+
+// calculateStatistics.js
+export function calculateStatistics(numbers) {
+  if (!numbers || !numbers.length) {
+    return {
+      average: undefined,
+      median: undefined,
+      min: undefined,
+      max: undefined,
+    };
+  }
+
+  const sortedNumbers = [...numbers].sort((a, b) => a - b);
+
+  const average = numbers.reduce((acc, num) => acc + num, 0) / numbers.length;
+
+  const middleIndex = Math.floor(sortedNumbers.length / 2);
+  const median =
+    sortedNumbers.length % 2 !== 0
+      ? sortedNumbers[middleIndex]
+      : (sortedNumbers[middleIndex - 1] + sortedNumbers[middleIndex]) / 2;
+
+  const min = sortedNumbers[0];
+  const max = sortedNumbers[sortedNumbers.length - 1];
+
+  return {
+    average,
+    median,
+    min,
+    max,
+  };
+}
+
+
+Входящие данные:
+Массив чисел может содержать целые и вещественные числа различного знака, а также нули.
+Возможно получение пустого массива.
+
+Ожидаемые результаты:
+Функция должна возвращать объект с четырьмя ключами:
+  average: Среднее значение массива.
+  median: Медиана массива.
+  min: Минимальное значение в массиве.
+  max: Максимальное значение в массиве.
+
+
+Пример входных данных и ожидаемого результата:
+
+№1
+Input: [1, 2, 3, 4, 5]
+
+Output: {
+  average: 3,
+  median: 3,
+  min: 1,
+  max: 5
+}
+
+№2
+Input: [-1, 0, 1]
+
+Output: {
+  average: 0,
+  median: 0,
+  min: -1,
+  max: 1
+}
+
+№3
+Input: []
+
+Output: {
+  average: undefined,
+  median: undefined,
+  min: undefined,
+  max: undefined
+}
