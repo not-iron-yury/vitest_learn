@@ -1,0 +1,45 @@
+Задача №5: Тестирование функции для расчета скидки
+
+Описание задачи:
+Ты работаешь над системой управления продажами, где требуется реализовать функцию для расчета скидки
+на основе суммы покупки и уровня лояльности клиента. Тебе нужно протестировать функцию calculateDiscount,
+которая принимает сумму покупки и уровень лояльности клиента и возвращает итоговую скидку.
+
+Готовый код:
+// discountCalculator.js
+export function calculateDiscount(purchaseAmount, loyaltyLevel) {
+  if (loyaltyLevel === 'platinum') {
+    return purchaseAmount * 0.2;
+  } else if (loyaltyLevel === 'gold') {
+    return purchaseAmount * 0.15;
+  } else if (loyaltyLevel === 'silver') {
+    return purchaseAmount * 0.1;
+  } else {
+    return 0;
+  }
+}
+
+Входящие данные:
+Сумма покупки — положительное число.
+Уровень лояльности клиента — строка, принимающая значения: "platinum", "gold", "silver" или любое другое значение (в этом случае скидка не предоставляется).
+
+Ожидаемые результаты:
+Функция должна возвращать скидку, рассчитанную исходя из уровня лояльности клиента и суммы покупки.
+Если уровень лояльности неизвестен, скидка должна быть равна нулю.
+
+Пример входных данных и ожидаемого результата:
+№1
+Input: (purchaseAmount: 100, loyaltyLevel: 'platinum')
+Output: 20
+
+№2
+Input: (purchaseAmount: 150, loyaltyLevel: 'gold')
+Output: 22.5
+
+№3
+Input: (purchaseAmount: 200, loyaltyLevel: 'silver')
+Output: 20
+
+№4
+Input: (purchaseAmount: 250, loyaltyLevel: 'unknown')
+Output: 0
