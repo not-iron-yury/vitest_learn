@@ -1,0 +1,48 @@
+Задача №7: Тестирование функции с несколькими исключениями
+
+Описание задачи:
+Ты работаешь над функцией parseString, которая принимает строку и пытается преобразовать её в целое число.
+Если строка не может быть преобразована в число, функция должна выбросить соответствующее исключение.
+Если строка пустая, функция должна выбросить исключение EmptyStringError.
+Если строка содержит недопустимые символы, функция должна выбросить исключение InvalidCharacterError.
+
+Готовый код:
+// parseString.js
+export class EmptyStringError extends Error {}
+export class InvalidCharacterError extends Error {}
+
+export function parseString(str) {
+  if (str.trim() === '') {
+    throw new EmptyStringError('The string cannot be empty.');
+  }
+
+  const parsedInt = parseInt(str, 10);
+  if (isNaN(parsedInt)) {
+    throw new InvalidCharacterError('The string contains invalid characters.');
+  }
+
+  return parsedInt;
+}
+
+Входящие данные:
+Строка, которая может быть пустой, содержать недопустимые символы или быть корректным целым числом.
+
+Ожидаемые результаты:
+Если строка корректна, функция должна вернуть целое число.
+Если строка пустая, функция должна выбросить исключение EmptyStringError.
+Если строка содержит недопустимые символы, функция должна выбросить исключение InvalidCharacterError.
+
+
+Пример входных данных и ожидаемого результата:
+
+№1
+Input: '123'
+Output: 123
+
+№2
+Input: ''
+Expected Exception: EmptyStringError
+
+№3
+Input: 'abc'
+Expected Exception: InvalidCharacterError
